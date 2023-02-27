@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Content Switcher Template</title>
+    <link rel="stylesheet" href="/styles.css">
+	<style>
+		/* Style for the body */
+		body {
+			background-color: #2a2a2a;
+			color: #ffffff;
+			font-family: "Arial", sans-serif;
+			font-size: 16px;
+			line-height: 1.5;
+			margin: 0;
+			padding: 0;
+			overflow-x: hidden;
+		}
+		/* Style for the content cards */
+		.card {
+			border: 1px solid #ffffff;
+			background-color: #222222;
+			padding: 10px;
+			margin-bottom: 10px;
+			display: none;
+			box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.2);
+		}
+		/* Style for the active content card */
+		.card.active {
+			display: block;
+            max-width: 1056px;
+		}
+		/* Style for the view switcher buttons */
+		.button {
+			background-color: transparent;
+			border: 1px solid #ffffff;
+			color: #ffffff;
+			cursor: pointer;
+			font-size: 14px;
+			margin-right: 16px;
+			padding: 4px 8px;
+			text-transform: uppercase;
+			transition: all 0.2s ease-in-out;
+		}
+		.button:hover {
+			background-color: #ffffff;
+			color: #2a2a2a;
+			transform: translateY(-2px);
+			box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.2);
+		}
+		/* Style for the content title */
+		.card h2 {
+			font-size: 28px;
+			margin-top: 0;
+		}
+		/* Style for the content description */
+		.card p {
+			font-size: 16px;
+			margin-bottom: 10px;
+		}
+		/* Style for the content thumbnail */
+		.card img {
+			display: block;
+			max-width: 100%;
+			margin-bottom: 10px;
+		}
+		/* Style for the media elements */
+		.card video,
+		.card audio {
+			display: block;
+			max-width: 100%;
+			margin-bottom: 10px;
+		}
+		/* Style for the comment form */
+		.content-switcher__comment-form {
+			background-color: #222222;
+			border: 1px solid #ffffff;
+			box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.2);
+			padding: 10px;
+			margin-bottom: 10px;
+		}
+		/* Style for the comment form label */
+		.content-switcher__comment-form label {
+			display: block;
+			font-size: 16px;
+			margin-bottom: 10px;
+		}
+		/* Style for the comment form checkbox */
+		.content-switcher__comment-form input[type="checkbox"] {
+			margin-right: 10px;
+			cursor: pointer;
+		}
+		/* Style the comment form submit button */
+		.content-switcher__comment-form button {
+			background-color: transparent;
+			border: 2px solid #ffffff;
+			color: #ffffff;
+			cursor: pointer;
+			font-size: 16px;
+			padding: 10px 20px;
+        }
+
+        .card-footer {
+            display: flex;
+            flex-direction: row;
+
+            justify-content: space-between;
+            align-items: center;
+        }
+
+
+        .card-footer button {
+            margin-bottom: 10px;
+            width: 100%;
+        }
+
+        .content-preview {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            justify-self: center;
+            max-width: 1056px;
+        }
+
+	</style>
+</head>
+<body>
+
+    <section class="content-preview">
+        <div class="card-footer">
+            <button class="button" onclick="switchView('summary')">summary</button>
+            <button class="button" onclick="switchView('all')">detailed</button>
+            <button class="button" onclick="switchView('media')">media</button>
+            <button class="button" onclick="switchView('interactive')">interactive</button>
+        </div>
+        <div class="card" id="summary">
+            <h2>Shay's Hanggliding Adivice</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste error quisquam officia ipsum minima omnis sequi in culpa asperiores deserunt.
+                
+            </p>
+            <img src="thumbnail.jpg" alt="Thumbnail">
+        </div>
+                <div class="card" id="summary">
+            <h2>Title</h2>
+            <p>Description</p>
+            <img src="thumbnail.jpg" alt="Thumbnail">
+        </div>
+        <div class="card" id="all">
+            <h2>Title</h2>
+            <p>Description</p>
+            <img src="thumbnail.jpg" alt="Thumbnail">
+            <p>All content goes here</p>
+            <p>Comments: <input type="checkbox" id="comments"></p>
+        </div>
+        <div class="card" id="interactive">
+            <h2>Title</h2>
+            <p>Description</p>
+            <img src="thumbnail.jpg" alt="Thumbnail">
+            <p>Interactive content goes here</p>
+        </div>
+        <div class="card" id="media">
+            <h2>Title</h2>
+            <p>Description</p>
+            <video src="media.mp4" controls></video>
+            <audio src="media.mp3" controls></audio>
+        </div>
+    </section>
+	
+	<script>
+		// Function to switch between the different views
+		function switchView(view) {
+			// Get all content cards and hide them
+			var cards = document.querySelectorAll(".card");
+			for (var i = 0; i < cards.length; i++) {
+				cards[i].classList.remove("active");
+			}
+			// Show the active content card
+			document.getElementById(view).classList.add("active");
+			// Disable comments in detailed view if unchecked
+			if (view === "all") {
+				var comments = document.getElementById("comments");
+				if (!comments.checked) {
+					// Hide comments
+				}
+			}
+		}
+	</script>
+</body>
+</html>
