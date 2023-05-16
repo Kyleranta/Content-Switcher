@@ -131,6 +131,7 @@
             <button class="button" onclick="switchView('all')">detailed</button>
             <button class="button" onclick="switchView('media')">media</button>
             <button class="button" onclick="switchView('interactive')">interactive</button>
+			<button class="button" onclick="switchView('unique')">Unique UX</button>
         </div>
         <div class="card" id="summary">
             <h2>Shay's Hanggliding Adivice</h2>
@@ -163,6 +164,10 @@
             <video src="media.mp4" controls></video>
             <audio src="media.mp3" controls></audio>
         </div>
+		<div class="card" id="unique">
+			<h2>Unique UX</h2>
+			<p>Your saved content will appear here.</p>
+		</div>		
     </section>
 	
 	<script>
@@ -183,6 +188,17 @@
 				}
 			}
 		}
+	
+		// Function to save content
+		function saveContent(contentId) {
+			// Get the content that should be saved
+			var content = document.getElementById(contentId).innerText;
+			// Get the Unique UX card
+			var uniqueCard = document.getElementById("unique");
+			// Add the saved content to the Unique UX card
+			uniqueCard.innerHTML += "<p>" + content + "</p>";
+		}
 	</script>
+	
 </body>
 </html>
